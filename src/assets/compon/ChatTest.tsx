@@ -49,7 +49,7 @@ const Chat = () => {
                }}
              >
                <Container
-                 width="50%"
+                 width="45%"
                  bg={message.type === 'user' ? 'blue.600' : 'green.600'}
                  color={message.type === 'user' ? 'white' : 'white'}
                  borderRadius="md"
