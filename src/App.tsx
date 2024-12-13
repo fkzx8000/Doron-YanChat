@@ -1,36 +1,38 @@
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
-import Xtest from './assets/compon/test'
-import Ytest from './assets/compon/Chat'
-import { QueryClient } from '@tanstack/react-query';
+import Chat from './assets/compon/Chat'
+import ChatTest from './assets/compon/ChatTest'
+import { Badge, Container, HStack, Input, Spinner, Text, VStack } from '@chakra-ui/react';
+import UICard from './assets/compon/UICard'
+
 
 function App() {
-const queryClient = new QueryClient();
 
   return (
     <>
 
-<Ytest/>
-    <div>
-        <a href="https://vite.dev" target="_blank">
+
+<div className="card" style={{ display: "grid", placeItems: "center" }}>
+
+      </div>
+      <VStack py="50" spacing="10">
+      <HStack>
+      <a target="_blank">
           <img src={viteLogo} className="logo" alt="Vite logo" />
         </a>
-        <a href="https://react.dev" target="_blank">
+        <UICard />
+        <a target="_blank">
           <img src={reactLogo} className="logo react" alt="React logo" />
         </a>
-      </div>
-      <h1>{}</h1>
-      <div className="card">
+      </HStack>
+ 
+  {" "}
+  <p> </p>
+  {" "}
+  <ChatTest />
+</VStack>
 
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-      <Xtest/>
 
 
 

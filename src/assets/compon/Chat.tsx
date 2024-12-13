@@ -3,6 +3,7 @@ import useQueryBot from '../hooks/useQueryBot';
 import { useQuery } from '@tanstack/react-query';
 import { Spinner, Text } from '@chakra-ui/react';
 
+
 const Chat = () => {
   const [messages, setMessages] = useState<{ type: 'user' | 'bot'; text: string }[]>([]);
   const [input, setInput] = useState('');
