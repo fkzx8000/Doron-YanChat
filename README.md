@@ -88,8 +88,6 @@ Open this link in your browser to see the project in action.
 
 ## Screenshots
 
-_(Insert your screenshots below. For example:)_
-
 **Screenshot 1: Application Home Screen**  
 ![Home Screen](./src/screenshot/homeScr.png)
 
