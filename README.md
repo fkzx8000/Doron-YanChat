@@ -1,7 +1,3 @@
-Below is an English version of the README, with placeholders where you can add screenshots.
-
----
-
 # React Chatbot Project
 
 This project is a React-based chatbot application that sends queries to an external API (via Axios) and receives relevant responses. It utilizes **React Query** to manage the state of API requests, **TypeScript** for static typing, and **Chakra UI** for a modular and responsive user interface design. The code is structured to separate the API interaction layer (`api-client.ts`) from the main logic implemented in custom hooks (`useQueryBot` and `useQuerysBot`).
