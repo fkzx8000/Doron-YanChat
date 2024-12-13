@@ -38,15 +38,17 @@ const Chat = () => {
 
   return (
     <>
-      <Box p={5} shadow="md" borderWidth="1px" w="100%">
+      <Box p={5} shadow="md" borderWidth="1px" w="100%" bg="gray.800">
         <Box
           py={3}
+          px={4}
           borderWidth="1px"
           borderRadius="lg"
           overflow="hidden"
           overflowY="auto"
           height="300px"
           width="100%"
+          bg="gray.900"
         >
           {messages.length > 0 ? (
             messages.map((message, index) => (
