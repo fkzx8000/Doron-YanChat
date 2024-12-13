@@ -2,7 +2,6 @@ import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 import "./App.css";
 import Chat from "./assets/compon/Chat";
-import ChatTest from "./assets/compon/ChatTest";
 import { HStack, VStack } from "@chakra-ui/react";
 import UICard from "./assets/compon/UICard";
 
@@ -19,7 +18,7 @@ function App() {
             <img src={reactLogo} className="logo react" alt="React logo" />
           </a>
         </HStack>{" "}
-        <p> </p> <ChatTest />
+        <p> </p> <Chat />
       </VStack>
     </>
   );

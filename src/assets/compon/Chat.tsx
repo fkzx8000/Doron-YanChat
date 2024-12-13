@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import useQueryBot from "../hooks/useQueryBot";
 import { useQuery } from "@tanstack/react-query";
-import { Spinner, Text } from "@chakra-ui/react";
+import { Button, Container, Input, Spinner, Text, Box } from "@chakra-ui/react";
 
 const Chat = () => {
   const [messages, setMessages] = useState<
@@ -18,7 +18,7 @@ const Chat = () => {
       );
       return messages;
     },
-    enabled: false, // לא מפעיל את השאילתה אוטומטית
+    enabled: false,
   });
 
   const sendMessage = () => {
@@ -27,71 +27,81 @@ const Chat = () => {
     setInput("");
     refetch();
   };
-  // גלילה אוטומטית לתחתית בכל עדכון של ההודעות
+
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages]);
-  return (
-    <div
-      style={{
-        padding: "1rem",
-        width: "100%",
-        margin: "auto",
-        border: "1px solid #ddd",
-      }}
-    >
-      <h1>Chat</h1>
-      <div
-        style={{
-          height: "300px",
-          maxHeight: "300px",
-          overflowY: "auto",
-          marginBottom: "1rem",
-          padding: "0.5rem",
-          border: "1px solid #ddd",
-        }}
-      >
-        {messages.length > 0 ? (
-          messages.map((message, index) => (
-            <div
-              key={index}
-              style={{
-                textAlign: message.type === "user" ? "right" : "left",
-                margin: "0.5rem 0",
-              }}
-            >
-              <strong>{message.type === "user" ? "You: " : "Bot: "}</strong>
-              <span>{message.text}</span>
-            </div>
-          ))
-        ) : (
-          <p>No messages yet. Type a message to start the chat!</p>
-        )}
-        {/* אלמנט ריק שמשמש לנקודת גלילה */}
-        <div ref={messagesEndRef} />
-      </div>
-      <div style={{ display: "flex", gap: "0.5rem" }}>
-        {isLoading ? (
-          <>
-            <Text color={"red"}>Thinking </Text>
-            <Spinner color="red.500" />
-          </>
-        ) : (
-          <Text></Text>
-        )}
 
-        <input
-          type="text"
-          value={input}
-          onChange={(e) => setInput(e.target.value)}
-          placeholder="Type your message..."
-          style={{ flex: 1, padding: "0.5rem", border: "1px solid #ddd" }}
-        />
-        <button onClick={sendMessage} style={{ padding: "0.5rem 1rem" }}>
-          Send
-        </button>
-      </div>
-    </div>
+  const handleEvent = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setInput(e.target.value);
+  };
+
+  return (
+    <>
+      <Box p={5} shadow="md" borderWidth="1px" w="100%">
+        <Box
+          py={3}
+          borderWidth="1px"
+          borderRadius="lg"
+          overflow="hidden"
+          overflowY="auto"
+          height="300px"
+          width="100%"
+        >
+          {messages.length > 0 ? (
+            messages.map((message, index) => (
+              <div
+                key={index}
+                style={{
+                  display: "flex",
+                  justifyContent:
+                    message.type === "user" ? "flex-end" : "flex-start",
+                  margin: "0.5rem 0",
+                }}
+              >
+                <Container
+                  width="45%"
+                  bg={message.type === "user" ? "blue.600" : "green.600"}
+                  color={message.type === "user" ? "white" : "white"}
+                  borderRadius="md"
+                  padding="0.5rem"
+                  alignSelf={
+                    message.type === "user" ? "flex-end" : "flex-start"
+                  }
+                  marginRight={message.type === "user" ? "0" : "auto"}
+                  marginLeft={message.type === "bot" ? "0" : "auto"}
+                >
+                  <Text>{message.text}</Text>
+                </Container>
+              </div>
+            ))
+          ) : (
+            <p>No messages yet. Type a message to start the chat!</p>
+          )}
+          <div ref={messagesEndRef} />
+        </Box>
+        <Box paddingTop={3}>
+          <div style={{ display: "flex", gap: "0.5rem" }}>
+            {isLoading ? (
+              <>
+                <Text color={"red"}>Thinking</Text>
+                <Spinner color="red.500" />
+              </>
+            ) : null}
+            <Input
+              placeholder="Type your message..."
+              type="text"
+              value={input}
+              variant="subtle"
+              onChange={handleEvent}
+            />
+            <Button colorScheme="teal" variant="subtle" onClick={sendMessage}>
+              Send
+            </Button>
+          </div>
+        </Box>
+      </Box>
+    </>
   );
 };
 
