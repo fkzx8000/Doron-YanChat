@@ -6,6 +6,13 @@ This project is a React-based chatbot application that sends queries to an exter
 - **`useQuerysBot.tsx`**: Handles a single query to the server and returns three relevant responses.
 
 All state management for queries, including loading, error handling, and caching, is done via `react-query`. API requests are managed through `axios`. The user interface styling and layout are built with `Chakra UI`.
+## Screenshots
+
+**Screenshot 1: Application Home Screen**  
+![Home Screen](./src/screenshot/homeScr.png)
+
+**Screenshot 2: Query Results**  
+![Query Results](./src/screenshot/ChatScr.png)
 
 ## Key Technologies
 
@@ -82,13 +89,6 @@ Once the command finishes, you’ll receive a local development URL, typically: 
 
 Open this link in your browser to see the project in action.
 
-## Screenshots
-
-**Screenshot 1: Application Home Screen**  
-![Home Screen](./src/screenshot/homeScr.png)
-
-**Screenshot 2: Query Results**  
-![Query Results](./src/screenshot/ChatScr.png)
 
 ## Notes
 
